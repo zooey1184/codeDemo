@@ -1,24 +1,29 @@
 import React from 'react'
-import { string, number } from 'prop-types';
 
 interface Items {
   text: string,
-  value: string | number
+  value: string|number
 }
 const List: React.FC = () => {
   const list:Items[] = [
     {
-      text: '你好',
+      text: 'hello',
       value: 'hello'
     },
     {
-      text: '世界',
+      text: 'segai',
       value: 'world'
     }
   ]
+  const ListItems: JSX.Element[] = list.map(item => {
+    return (
+      <div key={item.value}>{item.text}</div>
+    )
+  })
   return (
     <div>
-
+      {ListItems}
     </div>
   )
 }
+export default List
