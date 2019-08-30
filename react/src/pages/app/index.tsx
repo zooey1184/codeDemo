@@ -1,41 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState} from 'react'
 import './index.less';
-import List from './../list'
-import Count from './../count'
 import Theme from '../theme';
-import Model from '../../components/model/index';
-import ReducerDemo from '../useReducer';
-import InputRef from '../classC/useRef';
+import StateHook from '../../components/hooks/useState';
+import EffectHook from '../../components/hooks/useEffect';
 
 const App: React.FC = () => {
-  const [showModel, setModel] = useState(false)
-  
-  const showModelFn = ()=> {
-    console.log(showModel)
-    setModel(!showModel)
-  }
-
-  const model = showModel ? (
-    <Model>
-      <div>
-        heloo
-        <button className='hide_btn' onClick={showModelFn}>hideModel</button>
-      </div>
-    </Model>
-  ) : null
+  const [state, setState] = useState(true)
   return (
     <div className="App">
       <header className="App-header">
         Learn React
-        <List />
-        <Count />
         <Theme></Theme>
-        <InputRef></InputRef>
-        <ReducerDemo></ReducerDemo>
-        <button onClick={showModelFn}>showModel</button>
+        <StateHook/>
+        <button onClick={()=>setState(!state)}>showEffect</button>
+        <EffectHook name="hessllo" isShow={state}>
+          <div>effectHook children</div>
+        </EffectHook>
       </header>
-      {model}
-      
     </div>
   );
 }
