@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './pages/app';
+import './index.less';
+import './common/css/flex.less'
+import '@/common/css/transition.less'
+import App from './pages/topvay/app/index';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));

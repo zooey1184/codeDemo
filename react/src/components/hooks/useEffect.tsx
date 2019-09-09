@@ -7,9 +7,10 @@ interface Iobj {
 const EffectHook: React.FC<Iobj> = (props)=> {
   const [age, setAge] = useState(20)
   useEffect(()=> {
-    document.title = `age is :${age}`
-    return function cleanup() {
-      document.title = 'react demo'
+    console.log('effect');
+    return () => {
+      // init every time
+      console.log('clean')
     }
   }, [age])
   const com = props.isShow ? (
