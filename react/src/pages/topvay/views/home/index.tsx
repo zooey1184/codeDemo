@@ -31,7 +31,7 @@ const Home:React.FC = ()=> {
         <LoginPanel {...(data as unknown as IData).user_loan_info}></LoginPanel>
       </div>
       <p style={{textAlign: 'center', marginTop: '50px'}} className='theme_color'>
-        客服热线：{(data as unknown as IData).guest_phone}
+        客服热线: {(data as unknown as IData).guest_phone}
       </p>
     </>
   ) : null
