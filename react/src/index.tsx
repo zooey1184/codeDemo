@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.less';
 import './common/css/flex.less'
 import '@/common/css/transition.less'
-import App from './pages/topvay/app/index';
+import App from './pages/vayaDong/app';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));

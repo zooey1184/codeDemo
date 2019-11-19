@@ -14,7 +14,9 @@ interface HeaderProps {
 }
 
 const plus = action(() => {
+  console.log('object');
   counter.count += 1
+  console.log(counter.count);
 })
 const Header: React.FC<HeaderProps> =(props)=> {
   return props.action !== 'start' ? (

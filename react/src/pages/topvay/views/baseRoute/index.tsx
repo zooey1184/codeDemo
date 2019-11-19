@@ -5,6 +5,16 @@ import Login from '../login/index';
 
 const RouterChild = withRouter((location)=> {
   console.log(location);
+  // const goPage = () => {
+  //   if (location.history.location.pathname !== '/login') {
+  //     location.history.push('/login')
+  //   }
+  // }
+  // useEffect(() => {
+  //   if (location.history.location.pathname !== '/login') {
+  //     location.history.push('/login')
+  //   }
+  // }, [location.history]) 
   return (
     <Switch>
       <Route path='/' exact  component={Home}></Route>
