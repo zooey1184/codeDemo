@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import Home from '../home/index';

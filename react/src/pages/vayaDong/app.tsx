@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom';
 import BaseRoute from './views/baseRoute/index';

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import imgUnloginTop from './../../imgs/home_unlogin.png'
 import imgLoginTop from './../../imgs/home1.png'

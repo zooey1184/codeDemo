@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, {useState} from 'react';
 import './startStyle.less'
 import imgIconCheck from './../../imgs/icon_check_w.png'

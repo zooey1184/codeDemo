@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, {useState} from 'react';
 import Cell from './../../components/cell'
 import imgPhone from './../../imgs/icon_phone.png'

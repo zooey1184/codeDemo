@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 
 const MiddlePane: React.FC = (props) => {
