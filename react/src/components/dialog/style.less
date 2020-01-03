@@ -1,0 +1,54 @@
+@btnGroupH: 45px;
+.__dialogWrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  background: rgba(30, 30, 30, .5);
+  opacity: 0;
+  z-index: 9;
+  .__dialogBtnGroup{
+    position: absolute;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    overflow: hidden;
+    bottom: 0;
+    width: 100%;
+    height: @btnGroupH
+  }
+  .__dialogBtnItem {
+    text-align: center;
+    border-top: 1px solid #eee;
+    height: 100%;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    &:active {
+      opacity: 0.8;
+      background: #fafafa;
+    }
+  }
+  .__dialogPane {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    min-height: 30px;
+    max-width: 600px;
+    top: 20%;
+    background: #fff;
+    border-radius: 10px;
+  }
+  .msgPane {
+    padding: 20px;
+    padding-bottom: 30px;
+    ._msgTitle {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+  }
+}
