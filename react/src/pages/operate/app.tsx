@@ -5,15 +5,23 @@ import './index.less'
 import './../../common/css/flex.less'
 import Cell from './../../components/cell'
 import api from './api/index'
-import mask from './../../components/maskPro'
-import SelectPane from './../../components/multSelect'
 import plugin from './../../components/plugin'
 import Toast from './../../components/toast'
+import SelectPane2 from '../../components/multSelect'
+import Dialog from './../../components/dialog'
 import iconOperate from './imgs/icon_operator.png'
 
 const toast = plugin(Toast, {
   id: 'toast',
   duration: 1500
+})
+const select = plugin(SelectPane2, {
+  id: 'select',
+  hide: ()=> select.hide()
+})
+const dialog = plugin(Dialog, {
+  id: 'dialog',
+  msg: 'msg dialog'
 })
 interface IArr {
   text: string|number,
@@ -69,27 +77,43 @@ const Operator: React.FC = () => {
     })
   }
   const pick = ()=> {
-    const list = [carrerList]
-    mask({
-      children: (
-        <SelectPane
-          list={list}
-          change={(ii:any)=> {
-            if(ii.target.index === list.length-1) {
-              let t = ii.pick.item
-              let str: any = []
-              t.map((item:IArr) => {
-                str.push(item.text)
-              })
-              setCarrerItem(str.join(''))
-            }
-          }}
-          hide={() => {
-            mask().hide()
-          }}>
-        </SelectPane>
-      )
-    }).show()
+    // const list2 = [
+    //   { text: 'react', value: '3' },
+    //   { text: 'vue', value: '4' }
+    // ]
+    // const list = [carrerList, list2]
+    // select.show({
+    //   list: list,
+    //   changeLazy: (d:any)=> {
+    //     let t = d.pick.item
+    //     let str: any = []
+    //     t.map((item: IArr) => str.push(item.text))
+    //     setCarrerItem(str.join('-'))
+    //   }
+    // })
+    dialog.show({
+      title: '提示',
+      msg: `hello world react`,
+      animate: 'scaleDownHalf',
+      btn: [
+        {
+          text: 'CLOSE',
+          fn: ()=> {
+            dialog.hide()
+          }
+        },
+        {
+          text: 'show',
+          style: {
+            color: '#d43f33',
+            background: '#333'
+          },
+          fn: () => {
+            dialog.hide()
+          }
+        }
+      ]
+    })
   }
   return (
     <div className='pageWrap'>
@@ -108,40 +132,3 @@ const Operator: React.FC = () => {
 }
 
 export default Operator
-
-
-// interface Info {
-//   gps: object, // {latitude: string, longitude: string}
-//   device: ["IOS" | "ANDROID"],
-//   touch: boolean,
-//   rect: object, // {w: number, h: number}
-//   referrer: string,
-//   os: string,
-//   line: ["online" | "offline"],
-//   battery: string | number,
-//   tag: string,
-//   historyLevel: number,
-//   fb: {
-//     id: number,
-//     name: string,
-//     email: string,
-//     location: string,
-//     age_range: string | number,
-//     birthday: string,
-//     link: string,
-//     gender: ["male" | "female"],
-//     friends: {
-//       data: [
-//         {
-//           id: number,
-//           name: string,
-//           link: string,
-//           age_range: string | number
-//         }
-//       ],
-//       summary: {
-//         total_count: number
-//       }
-//     }
-//   }
-// }
