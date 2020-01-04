@@ -1,0 +1,29 @@
+.__selectPane {
+  background: #fff;
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  min-height: 200px;
+  max-height: 300px;
+  overflow: auto;
+  .__selectItemPane {
+    height: 42px;
+    font-size: 16px;
+    line-height: 42px;
+    position: relative;
+    padding: 0 20px;
+    &::after {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      content: "";
+      height: 1px;
+      background: #eee;
+      transform: scaleY(0.6)
+    }
+    &:active {
+      background: #fbfbfb;
+    }
+  }
+}

@@ -4,9 +4,8 @@ import ReactDOM from 'react-dom';
 import './index.less';
 import './common/css/flex.less'
 import '@/common/css/transition.less'
-import App from './pages/vayaDong/app';
+import App from './pages/operate/app';
 import * as serviceWorker from './serviceWorker';
-
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

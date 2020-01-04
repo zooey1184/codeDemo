@@ -4,6 +4,7 @@ import Cell from './../../components/cell'
 import imgPhone from './../../imgs/icon_phone.png'
 import imgLogo from './../../imgs/logo.png'
 import CountDown from '../../components/countDown/index';
+import mask from './../../../../components/maskPro/wrap'
 
 const Login:React.FC = () => {
   // data
@@ -19,6 +20,23 @@ const Login:React.FC = () => {
   }
   const loginFn = ()=> {
     console.log(phone, code);
+    console.log(mask().show());
+    setTimeout(()=> {
+      mask().hide()
+    }, 2000)
+    // setTimeout(()=> {
+    //   mask.hide()
+    // }, 2000)
+    // setTimeout(()=> {
+    //   mask.show({
+    //     children: () => (
+    //       <div>
+    //         <img src={imgLogo} alt=""/>
+    //       </div>
+    //     ),
+    //     duration: 2000,
+    //   })
+    // }, 3000)
   }
   const change = ()=> {
     console.log('change');
@@ -60,7 +78,9 @@ const Login:React.FC = () => {
       <button
         style={{margin: '20px 0'}}
         className='btn primary_btn radius_btn act_btn'
-        onClick={loginFn}>Login</button>  
+        onClick={loginFn}>
+        Login
+      </button>
     </div>
   )
 }
