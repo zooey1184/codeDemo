@@ -100,7 +100,7 @@ const plugin = (Component, props={}) => {
         div = document.createElement('div')
         div.setAttribute('id', id)
         document.body.appendChild(div)
-      }, beforeRemoveTime + 320)
+      }, beforeRemoveTime + 20)
     }
   }
   return {show, hide}
