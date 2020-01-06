@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import './style.less'
 interface LoadProps {

@@ -63,9 +63,9 @@ const Operator: React.FC = () => {
       setCarrer(data)
     })
   }
-  useEffect(()=> {
-    getData()
-  }, [])
+  // useEffect(()=> {
+  //   getData()
+  // }, [])
   const goNext = ()=> {
     toast.show({
       msg: 'title',

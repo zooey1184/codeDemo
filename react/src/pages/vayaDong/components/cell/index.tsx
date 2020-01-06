@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import arrow from './arrow.png'
 import './cell.less'
