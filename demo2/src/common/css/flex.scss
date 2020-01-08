@@ -67,8 +67,14 @@
   flex-shrink: 0
 }
 .f_d_c {
-  flex-direction: column
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column
 }
 .f_d_r {
-  flex-direction: row
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row
 }

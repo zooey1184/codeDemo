@@ -1,0 +1,86 @@
+.__C-Select {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  background: rgba(30, 30, 30, .5);
+  opacity: 0;
+  z-index: 9;
+  &-Pane {
+    background: #fff;
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    min-height: 280px;
+    max-height: 480px;
+    overflow: hidden;
+
+    &-Header {
+      height: 48px;
+      padding: 0 15px;
+      font-size: 16px;
+      position: relative;
+
+      &-Btn {
+        position: absolute;
+        right: 15px;
+        height: 35px;
+        border-radius: 5px;
+        border: 1px solid #eee;
+        font-size: 15px;
+        top: 6px;
+        background: #fafafa;
+        padding: 1px 8px;
+        outline: none;
+        font-weight: 700;
+
+        &:active {
+          background: #fff;
+        }
+      }
+
+      &-TxtItem {
+        position: relative;
+        color: cadetblue;
+        margin-right: 8px;
+      }
+    }
+
+    &-Content {
+      position: absolute;
+      height: calc(100% - 48px);
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 0 5px #eee;
+      bottom: 0;
+      overflow: auto;
+      transition: all 400ms linear;
+      transform: translate3d(0, 0, 0);
+    }
+
+    &-Item {
+      height: 42px;
+      font-size: 16px;
+      line-height: 42px;
+      position: relative;
+      padding: 0 20px;
+
+      &::after {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        content: "";
+        height: 1px;
+        background: #eee;
+        transform: scaleY(0.6)
+      }
+
+      &:active {
+        background: #fbfbfb;
+      }
+    }
+  }
+}

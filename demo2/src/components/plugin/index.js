@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import ReactDOM from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
-import './../../common/css/transition.scss'
+// import './../../common/css/transition.scss'
 // 动画的包裹  否则加入节点会让动画显得生硬
 // 插件在插入节点的一瞬间会初始化显示  所以插件的一开始需要透明度为0 并且设置动画的enter时 opacity: 0 !important
 const Wrap = props => {

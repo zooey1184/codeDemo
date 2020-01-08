@@ -6,7 +6,7 @@ import calendar from './dateOrigin'
  * @return Number
  * @eg:var count = calendar.lYearDays(1987) ;//count=387
  */
-const lYearDays = (y) => {
+const lYearDays = (y)=> {
   let sum = 348;
   for (let i = 0x8000; i > 0x8; i >>= 1) {
     sum += (calendar.lunarInfo[y - 1900] & i) ? 1 : 0;
@@ -20,7 +20,7 @@ const lYearDays = (y) => {
  * @return Number (0-12)
  * @eg:var leapMonth = calendar.leapMonth(1987) ;//leapMonth=6
  */
-const leapMonth = (y) => { //闰字编码 \u95f0
+const leapMonth = (y)=> { //闰字编码 \u95f0
   return (calendar.lunarInfo[y - 1900] & 0xf);
 }
 
@@ -30,7 +30,7 @@ const leapMonth = (y) => { //闰字编码 \u95f0
  * @return Number (0、29、30)
  * @eg:var leapMonthDay = calendar.leapDays(1987) ;//leapMonthDay=29
  */
-const leapDays = (y) => {
+const leapDays = (y)=> {
   if (leapMonth(y)) {
     return ((calendar.lunarInfo[y - 1900] & 0x10000) ? 30 : 29);
   }
@@ -43,7 +43,7 @@ const leapDays = (y) => {
  * @return Number (-1、29、30)
  * @eg:var MonthDay = calendar.monthDays(1987,9) ;//MonthDay=29
  */
-const monthDays = (y, m) => {
+const monthDays = (y, m)=> {
   if (m > 12 || m < 1) {
     return -1
   } //月份参数从1至12，参数错误返回-1
@@ -56,14 +56,14 @@ const monthDays = (y, m) => {
  * @return Number (-1、28、29、30、31)
  * @eg:var solarMonthDay = calendar.leapDays(1987) ;//solarMonthDay=30
  */
-const solarDays = (y, m) => {
+const solarDays = (y, m)=> {
   if (m > 12 || m < 1) {
     return -1
   } //若参数错误 返回-1
   var ms = m - 1;
   if (ms === 1) { //2月份的闰平规律测算后确认返回28或29
     let t = (y % 4 === 0) && (y % 100 !== 0)
-    return ((t || (y % 400 === 0)) ? 29 : 28);
+    return (( t || (y % 400 === 0)) ? 29 : 28);
   } else {
     return (calendar.solarMonth[ms]);
   }
@@ -74,7 +74,7 @@ const solarDays = (y, m) => {
  * @param  lYear 农历年的年份数
  * @return Cn string
  */
-const toGanZhiYear = (lYear) => {
+const toGanZhiYear = (lYear)=> {
   let ganKey = (lYear - 3) % 10;
   let zhiKey = (lYear - 3) % 12;
   if (ganKey === 0) ganKey = 10; //如果余数为0则为最后一个天干
@@ -82,24 +82,24 @@ const toGanZhiYear = (lYear) => {
   return calendar.Gan[ganKey - 1] + calendar.Zhi[zhiKey - 1];
 }
 
-/**
- * 公历月、日判断所属星座
- * @param  cMonth [description]
- * @param  cDay [description]
- * @return Cn string
- */
-const toAstro = (cMonth, cDay) => {
+ /**
+  * 公历月、日判断所属星座
+  * @param  cMonth [description]
+  * @param  cDay [description]
+  * @return Cn string
+  */
+const toAstro = (cMonth, cDay)=> {
   let s = "\u9b54\u7faf\u6c34\u74f6\u53cc\u9c7c\u767d\u7f8a\u91d1\u725b\u53cc\u5b50\u5de8\u87f9\u72ee\u5b50\u5904\u5973\u5929\u79e4\u5929\u874e\u5c04\u624b\u9b54\u7faf";
   let arr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22];
   return s.substr(cMonth * 2 - (cDay < arr[cMonth - 1] ? 2 : 0), 2) + "\u5ea7"; //座
 }
 
 /**
- * 传入offset偏移量返回干支
- * @param offset 相对甲子的偏移量
- * @return Cn string
- */
-const toGanZhi = (offset) => {
+* 传入offset偏移量返回干支
+* @param offset 相对甲子的偏移量
+* @return Cn string
+*/
+const toGanZhi = (offset)=> {
   return calendar.Gan[offset % 10] + calendar.Zhi[offset % 12];
 }
 
@@ -109,7 +109,7 @@ const toGanZhi = (offset) => {
  * @return day Number
  * @eg:var _24 = calendar.getTerm(1987,3) ;//_24=4;意即1987年2月4日立春
  */
-const getTerm = (y, n) => {
+const getTerm = (y, n)=> {
   if (y < 1900 || y > 2100) {
     return -1;
   }
@@ -165,7 +165,7 @@ const getTerm = (y, n) => {
  * @return Cn string
  * @eg:var cnMonth = calendar.toChinaMonth(12) ;//cnMonth='腊月'
  */
-const toChinaMonth = (m) => { // 月 => \u6708
+const toChinaMonth = (m)=> { // 月 => \u6708
   if (m > 12 || m < 1) {
     return -1
   } //若参数错误 返回-1
@@ -180,7 +180,7 @@ const toChinaMonth = (m) => { // 月 => \u6708
  * @return Cn string
  * @eg:var cnDay = calendar.toChinaDay(21) ;//cnMonth='廿一'
  */
-const toChinaDay = (d) => { //日 => \u65e5
+const toChinaDay = (d)=> { //日 => \u65e5
   var s;
   switch (d) {
     case 10:
@@ -200,12 +200,12 @@ const toChinaDay = (d) => { //日 => \u65e5
 }
 
 /**
- * 年份转生肖[!仅能大致转换] => 精确划分生肖分界线是“立春”
- * @param y year
- * @return Cn string
- * @eg:var animal = calendar.getAnimal(1987) ;//animal='兔'
- */
-const getAnimal = (y) => {
+* 年份转生肖[!仅能大致转换] => 精确划分生肖分界线是“立春”
+* @param y year
+* @return Cn string
+* @eg:var animal = calendar.getAnimal(1987) ;//animal='兔'
+*/
+const getAnimal = (y)=> {
   return calendar.Animals[(y - 4) % 12]
 }
 
@@ -217,7 +217,7 @@ const getAnimal = (y) => {
  * @return JSON object
  * @eg:console.log(calendar.solar2lunar(1987,11,01));
  */
-const solar2lunar = (yy, mm, dd) => { //参数区间1900.1.31~2100.12.31
+const solar2lunar = (yy, mm, dd)=> { //参数区间1900.1.31~2100.12.31
   //年份限定、上限
   if (yy < 1900 || yy > 2100) {
     return -1; // undefined转换为数字变为NaN
@@ -363,7 +363,7 @@ const solar2lunar = (yy, mm, dd) => { //参数区间1900.1.31~2100.12.31
  * @return JSON object
  * @eg:console.log(calendar.lunar2solar(1987,9,10));
  */
-const lunar2solar = (y, m, d, isLeapMonth) => { //参数区间1900.1.31~2100.12.1
+const lunar2solar = (y, m, d, isLeapMonth)=> { //参数区间1900.1.31~2100.12.1
   var _leapMonth = leapMonth(y);
   if (isLeapMonth && (_leapMonth !== m)) {
     return -1;

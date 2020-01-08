@@ -1,125 +1,61 @@
-@mixin transtion($ime:300ms) {
-  transition: all $ime linear;
-}
-// 透明度渐变过渡 transition
-.fade-enter {
-  opacity: 0;
-  display: block
-}
-.fade-enter-active {
-  opacity: 1 !important;
-  @include transtion()
-}
-.fade-enter-done,
-.fade-exit {
-  opacity: 1 !important;
-}
-.fade-exit-active {
-  opacity: 0 !important;
-  @include transtion()
-}
+@import './cssTransition.scss';
+
+// fade
+@include enter(fade);
+@include active(fade);
+@include exit(fade);
+
 // slideUp
-.slideUp-enter {
-  opacity: 0;
-  transform: translateY(100%)
-}
-
-.slideUp-enter-active {
-  opacity: 1 !important;
-  transform: translateY(0);
-  @include transtion()
-}
-
-.slideUp-exit {
-  opacity: 1 !important;
-  transform: translateY(0);
-}
-
-.slideUp-exit-active {
-  opacity: 0 !important;
+@include enter(slideUp){
   transform: translateY(100%);
-  @include transtion()
-}
+};
+@include active(slideUp){
+  transform: translateY(0);
+};
+@include exit(slideUp){
+  transform: translateY(100%);
+};
 
 // slideDown
-.slideDown-enter {
-  opacity: 0 !important;
+@include enter(slideDown) {
   transform: translateY(-100%)
-}
-.slideDown-enter-active {
-  opacity: 1 !important;
+};
+@include active(slideDown) {
   transform: translateY(0);
-  @include transtion()
-}
-.slideDown-exit {
-  opacity: 1 !important;
-  transform: translateY(0);
-}
-.slideDown-exit-active {
-  opacity: 0 !important;
+};
+@include exit(slideDown) {
   transform: translateY(-100%);
-  @include transtion()
-}
+};
+
 // scaleUp
-.scaleUp-enter {
-  opacity: 0 !important;
+@include enter(scaleUp) {
   transform: scale(1.2)
-}
-.scaleUp-enter-active {
-  opacity: 1 !important;
+};
+@include active(scaleUp) {
   transform: scale(1);
-  @include transtion()
-}
-.scaleUp-exit {
-  opacity: 1 !important;
-  transform: scale(1)
-}
-.scaleUp-exit-active {
-  opacity: 0 !important;
-  transform: scale(1.2);
-  @include transtion()
-}
+};
+@include exit(scaleUp) {
+  transform: scale(1.2)
+};
+
 // scaleDown
-.scaleDown-enter {
-  opacity: 0 !important;
+@include enter(scaleDown) {
   transform: scale(0)
-}
-
-.scaleDown-enter-active {
-  opacity: 1 !important;
+};
+@include active(scaleDown) {
   transform: scale(1);
-  @include transtion()
-}
+};
+@include exit(scaleDown) {
+  transform: scale(0)
+};
 
-.scaleDown-exit {
-  opacity: 1 !important;
-  transform: scale(1)
-}
-
-.scaleDown-exit-active {
-  opacity: 0 !important;
-  transform: scale(0);
-  @include transtion()
-}
 // scaleDownHalf
-.scaleDownHalf-enter {
-  opacity: 0 !important;
+@include enter(scaleDownHalf) {
   transform: scale(0.8)
-}
-
-.scaleDownHalf-enter-active {
-  opacity: 1 !important;
+};
+@include active(scaleDownHalf) {
   transform: scale(1);
-  @include transtion()
-}
-
-.scaleDownHalf-exit {
-  opacity: 1 !important;
-  transform: scale(1)
-}
-
-.scaleDownHalf-exit-active {
-  opacity: 0 !important;
-  transform: scale(0.8);
-  @include transtion()
-}
+};
+@include exit(scaleDownHalf) {
+  transform: scale(0.8)
+};

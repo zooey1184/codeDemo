@@ -1,0 +1,45 @@
+@mixin transtion($time:300ms) {
+  -webkit-transition: all $time linear;
+  -o-transition: all $time linear;
+  -moz-transition: all $time linear;
+  transition: all $time linear;
+}
+
+@mixin enter($name, $fade: true) {
+  .#{$name}-enter {
+    @if($fade) {
+      opacity: 0 !important;
+    }
+    @content;
+  }
+}
+@mixin exit($name, $fade: true) {
+  .#{$name}-exit-active {
+    @if($fade) {
+      opacity: 0 !important;
+    };
+    @content;
+    @include transtion()
+  }
+}
+@mixin active($name, $fade:true) {
+  .#{$name}-enter-active {
+    @content;
+    @if($fade) {
+      opacity: 1 !important;
+    };
+    @include transtion()
+  }
+  .#{$name}-enter-done {
+    @content;
+    @if($fade) {
+      opacity: 1 !important;
+    };
+  }
+  .#{$name}-exit {
+    @content;
+    @if($fade) {
+      opacity: 1 !important;
+    }
+  }
+}
