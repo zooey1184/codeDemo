@@ -152,9 +152,18 @@ const SelectPane = props => {
       hide()
     }
   }
+  const close = (e) => {
+    if (props.close && typeof props.close === 'function') {
+      let l = e.target.className.split(' ')
+      let b = l.some(item => item === cssPre)
+      if (b) {
+        props.close()
+      }
+    }
+  }
   return (
     <CSSTransition  in={inProp} classNames='fade' timeout={300}>
-      <div className={`${cssPre}`} ref={ref}>
+      <div className={`${cssPre}`} ref={ref} onClick={(e) => close(e)}>
         <CSSTransition in={inProp} classNames='slideUp' timeout={400}>
           <div className={`${cssPane}`}>
             <div className={`${cssHead} f_flex f_a_c`}>

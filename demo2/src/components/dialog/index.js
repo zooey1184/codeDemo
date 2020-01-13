@@ -52,10 +52,18 @@ const Dialog = props=> {
       </div>
     )
   }
-  
+  const close = (e)=> {
+    if(props.close && typeof props.close === 'function') {
+      let l = e.target.className.split(' ')
+      let b = l.some(item => item === cssPre)
+      if(b) {
+        props.close()
+      }
+    }
+  }
   return (
     <CSSTransition  in={inProp} classNames='fade' timeout={300}>
-      <div className={`${cssPre}`} ref={ref}>
+      <div className={`${cssPre}`} ref={ref} onClick={(e)=> close(e)}>
         <CSSTransition in={inProp} classNames={animate} timeout={300}>
           <Content/>
         </CSSTransition>
