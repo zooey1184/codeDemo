@@ -4,6 +4,7 @@ const path = require('path')
  * 注意：不支持异步获取
  */
 const config = {
+  publicPath: '/',
   /** entry 入口文件
    * config 配置自动寻找 index.html  index.js
    * string 文件入口
@@ -17,6 +18,15 @@ const config = {
     alias: {
       '@': path.join(__dirname, './src')
     }
+  },
+  module: {
+    rules: []
+  },
+  sourceMap: false,
+  plugins: [],
+  devServer: {
+    port: 3001,
+    // proxy: {}
   }
 }
 

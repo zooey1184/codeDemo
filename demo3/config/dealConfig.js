@@ -83,9 +83,36 @@ const getResolve = () => {
   }
   return resolve
 }
+// 获取module
+const getModule = () => {
+  let rmodule = {}
+  if(reactConfig) {
+    rmodule = reactConfig.module || {}
+  }
+  return rmodule
+}
+// 获取插件
+const getPlugins = () => {
+  let plugins = []
+  if(reactConfig) {
+    plugins = reactConfig.plugins || []
+  }
+  return plugins
+}
+// 获取devServer 的 port
+const getPort = () => {
+  let port = 3000
+  if(reactConfig) {
+    port = reactConfig.devServer && reactConfig.devServer.port || 3000
+  }
+  return port
+}
 
 module.exports = {
   getReactConfig,
   getEntryConfig,
-  getResolve
+  getResolve,
+  getModule,
+  getPlugins,
+  getPort
 }

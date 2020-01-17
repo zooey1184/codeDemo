@@ -24,7 +24,7 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-const {getEntryConfig, getResolve} = require('./dealConfig')
+const {getEntryConfig, getResolve, getModule, getPlugins} = require('./dealConfig')
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -160,10 +160,17 @@ module.exports = function(webpackEnv) {
     return loaders;
   };
   
+  /********************** 自定义模块配置 start *****************/
   // resolve 模块
   const Resolve = getResolve()
   // resolve 别名设置
   const Alias = Resolve.alias || {}
+  // loader 规则
+  const Rules = getModule().rules || []
+  // plugins
+  const RPlugins = getPlugins() || []
+  /********************** 自定义模块配置 end *****************/
+
   return {
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
     // Stop compilation early in production
@@ -518,6 +525,7 @@ module.exports = function(webpackEnv) {
             // Make sure to add the new loader(s) before the "file" loader.
           ],
         },
+        ...Rules
       ],
     },
     plugins: [
@@ -664,6 +672,7 @@ module.exports = function(webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
+        ...RPlugins
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
