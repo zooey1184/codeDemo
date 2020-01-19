@@ -135,5 +135,9 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "devDependencies": {
+    "cross-fetch": "^3.0.4"
+  },
+  "proxy": "http://uat.51bmsh.com"
 }

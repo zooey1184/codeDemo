@@ -1,0 +1,125 @@
+.transtion(@time:300ms) {
+  transition: all @time linear;
+}
+// 透明度渐变过渡 transition
+.fade-enter {
+  opacity: 0;
+  display: block
+}
+.fade-enter-active {
+  opacity: 1 !important;
+  .transtion
+}
+.fade-enter-done,
+.fade-exit {
+  opacity: 1 !important;
+}
+.fade-exit-active {
+  opacity: 0 !important;
+  .transtion
+}
+// slideUp
+.slideUp-enter {
+  opacity: 0;
+  transform: translateY(100%)
+}
+
+.slideUp-enter-active {
+  opacity: 1 !important;
+  transform: translateY(0);
+  .transtion
+}
+
+.slideUp-exit {
+  opacity: 1 !important;
+  transform: translateY(0);
+}
+
+.slideUp-exit-active {
+  opacity: 0 !important;
+  transform: translateY(100%);
+  .transtion
+}
+
+// slideDown
+.slideDown-enter {
+  opacity: 0 !important;
+  transform: translateY(-100%)
+}
+.slideDown-enter-active {
+  opacity: 1 !important;
+  transform: translateY(0);
+  .transtion
+}
+.slideDown-exit {
+  opacity: 1 !important;
+  transform: translateY(0);
+}
+.slideDown-exit-active {
+  opacity: 0 !important;
+  transform: translateY(-100%);
+  .transtion
+}
+// scaleUp
+.scaleUp-enter {
+  opacity: 0 !important;
+  transform: scale(1.2)
+}
+.scaleUp-enter-active {
+  opacity: 1 !important;
+  transform: scale(1);
+  .transtion
+}
+.scaleUp-exit {
+  opacity: 1 !important;
+  transform: scale(1)
+}
+.scaleUp-exit-active {
+  opacity: 0 !important;
+  transform: scale(1.2);
+  .transtion
+}
+// scaleDown
+.scaleDown-enter {
+  opacity: 0 !important;
+  transform: scale(0)
+}
+
+.scaleDown-enter-active {
+  opacity: 1 !important;
+  transform: scale(1);
+  .transtion
+}
+
+.scaleDown-exit {
+  opacity: 1 !important;
+  transform: scale(1)
+}
+
+.scaleDown-exit-active {
+  opacity: 0 !important;
+  transform: scale(0);
+  .transtion
+}
+// scaleDownHalf
+.scaleDownHalf-enter {
+  opacity: 0 !important;
+  transform: scale(0.8)
+}
+
+.scaleDownHalf-enter-active {
+  opacity: 1 !important;
+  transform: scale(1);
+  .transtion
+}
+
+.scaleDownHalf-exit {
+  opacity: 1 !important;
+  transform: scale(1)
+}
+
+.scaleDownHalf-exit-active {
+  opacity: 0 !important;
+  transform: scale(0.8);
+  .transtion
+}

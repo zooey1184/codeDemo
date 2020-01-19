@@ -2,7 +2,6 @@ const fs = require('fs')
 // const path = require('path');
 const paths = require('./paths');
 const useReactConfig = fs.existsSync(paths.reactConfig);
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const getReactConfig = () => {
   let ReactConfig;
@@ -94,8 +93,8 @@ const getModule = () => {
 // 获取插件
 const getPlugins = () => {
   let plugins = []
-  if(reactConfig) {
-    plugins = reactConfig.plugins || []
+  if (reactConfig && reactConfig.plugins) {
+    plugins = reactConfig.plugins
   }
   return plugins
 }
@@ -108,11 +107,29 @@ const getPort = () => {
   return port
 }
 
+// 获取publicPath 可使用process.env.PUBLIC_URL 获取 package.json 配置 homepage字段
+const getPublicPath = (isProduction = 'development') => {
+  let publicPath = '/'
+  if (reactConfig && isProduction === 'production' && reactConfig.publicPath) {
+    publicPath = reactConfig.publicPath
+  }
+  return publicPath
+}
+// 获取生产环境是否开启 sourceMap
+const getSourcemap = () => {
+  let sourceMap = false
+  if(reactConfig && reactConfig.sourceMap) {
+    sourceMap = reactConfig.sourceMap !== 'false'
+  }
+  return sourceMap
+}
 module.exports = {
   getReactConfig,
   getEntryConfig,
   getResolve,
   getModule,
   getPlugins,
-  getPort
+  getPort,
+  getPublicPath,
+  getSourcemap
 }

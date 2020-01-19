@@ -8,8 +8,26 @@ const url = require('url');
 // https://github.com/facebook/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+let envPublicUrl = process.env.PUBLIC_URL;
 
-const envPublicUrl = process.env.PUBLIC_URL;
+/**
+ * reactConfig 独立的配置
+ * outputDir 导出目录
+ * publicPath 资源路径 配置生产环境 默认 /
+ */
+const isoutputdir = fs.existsSync(resolveApp('react.config.js'))
+let config;
+let outputdir = 'build'
+if(isoutputdir) {
+  config = require(resolveApp('react.config.js'))
+  if(config.outputDir && typeof config.outputDir === 'string') {
+    outputdir = config.outputDir
+  }
+  if(config.publicPath && typeof config.publicPath === 'string') {
+    envPublicUrl = config.publicPath
+  }
+}
+
 
 function ensureSlash(inputPath, needsSlash) {
   const hasSlash = inputPath.endsWith('/');
@@ -33,8 +51,7 @@ const getPublicUrl = appPackageJson =>
 // like /todos/42/static/js/bundle.7289d.js. We have to know the root.
 function getServedPath(appPackageJson) {
   const publicUrl = getPublicUrl(appPackageJson);
-  const servedUrl =
-    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/');
+  const servedUrl = envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/');
   return ensureSlash(servedUrl, true);
 }
 
@@ -69,7 +86,7 @@ const resolveModule = (resolveFn, filePath) => {
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
-  appBuild: resolveApp('build'),
+  appBuild: resolveApp(outputdir),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
