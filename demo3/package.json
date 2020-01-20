@@ -36,6 +36,8 @@
     "jest-environment-jsdom-fourteen": "0.1.0",
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.4.2",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "0.8.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.5.0",
@@ -137,7 +139,8 @@
     ]
   },
   "devDependencies": {
-    "cross-fetch": "^3.0.4"
-  },
-  "proxy": "http://uat.51bmsh.com"
+    "cross-fetch": "^3.0.4",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0"
+  }
 }

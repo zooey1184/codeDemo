@@ -18,6 +18,7 @@ let envPublicUrl = process.env.PUBLIC_URL;
 const isoutputdir = fs.existsSync(resolveApp('react.config.js'))
 let config;
 let outputdir = 'build'
+let proxyReactConfig;
 if(isoutputdir) {
   config = require(resolveApp('react.config.js'))
   if(config.outputDir && typeof config.outputDir === 'string') {
@@ -25,6 +26,12 @@ if(isoutputdir) {
   }
   if(config.publicPath && typeof config.publicPath === 'string') {
     envPublicUrl = config.publicPath
+  }
+  if(config.devServer && config.devServer.proxy) {
+    let cdproxy = config.devServer.proxy
+    if(typeof cdproxy === 'string') {
+      proxyReactConfig = cdproxy
+    }
   }
 }
 
@@ -99,6 +106,7 @@ module.exports = {
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveModule(resolveApp, 'src/setupTests'),
   proxySetup: resolveApp('src/setupProxy.js'),
+  proxyReactConfig: proxyReactConfig,
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),

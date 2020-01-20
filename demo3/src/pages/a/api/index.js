@@ -3,9 +3,9 @@ import config from './config'
 
 export default function api(options) {
   let url = options.url
-  // if (!url.match(/http(s)?/g)) {
-  //   url = config + url
-  // }
+  if (!url.match(/http(s)?/g)) {
+    url = config + url
+  }
   return fetch(url, {
     method: options.type || 'post'
   }).then(res => {

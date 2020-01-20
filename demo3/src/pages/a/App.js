@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Test from '@/components/test'
 import api from './api'
-
+import a from './css/a.less'
+console.log(a);
 function App() {
   const [phone, setPhone] = useState('')
   const getData = () => {
     api({
-      url: '/tappocket_loan/user/get_user_info',
+      url: '/user/get_user_info',
       type: 'post'
     }).then(res => {
       console.log(res);
@@ -20,7 +21,7 @@ function App() {
     <div className="App">
       <Test></Test>
       phone is : {phone}
-      <p>app js</p>
+      <p className={a.t_c}>app js</p>
     </div>
   );
 }
