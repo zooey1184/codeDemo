@@ -11,28 +11,48 @@ const config = {
    */
   // publicPath: '/',
 
-  /** entry 入口文件
-   * config 配置自动寻找 index.html  index.js
+  /** 
+   * entry: string | object 入口文件配置
+   * 如果路径只是到文件夹，则配置自动寻找 index.html  index.js
    * string 文件入口
    * object {path, filename?} path=> 文件夹入口  filename => 最终访问形式
    * filename 默认index.html
+   * 可配置多入口
    */
   entry: {
     main: path.join(__dirname, './src/pages/a'),
+    // main: path.join(__dirname, './src/pages/a/index.js'),
+    // main: {
+    //   path: path.join(__dirname, './src/pages/a'),
+    //   filename: 'index.html'
+    // },
     // b: path.join(__dirname, './src/pages/b'),
   },
 
-  // resolve 暂时只提供 alias 入口配置
+  /**
+   * resolve:object webpack中resolve配置
+   * learn more：https://www.webpackjs.com/configuration/resolve/
+   * 暂时只提供alias别名设置
+   */
   resolve: {
-    // 别名设置
+    /**
+     * alias: object 别名设置
+     */
     alias: {
       '@': path.join(__dirname, './src')
     }
   },
 
-  // module 暂时只提供 rules 入口配置
+  /**
+   * module: object webpack中module配置
+   * learn more: https://www.webpackjs.com/concepts/modules/
+   */
   module: {
-    // loader 配置 这里新增配置loader
+    /**
+     * rules: object[] loader规则配置
+     * 默认支持less，sass以及module导入
+     * sass需要node>12.0
+     */
     rules: []
   },
 
@@ -52,6 +72,10 @@ const config = {
    */
   // plugins: [],
 
+  /**
+   * devServer: object 本地服务配置
+   * 暂时开放proxy && port
+   */
   // devServer: {
   //   /**
   //    * port：number || string
@@ -68,7 +92,10 @@ const config = {
   //   // proxy: ''
   // },
 
-  // 导出目录 默认为 build
+  /**
+   * outputDir: string 打包导出目录
+   * 默认 build 文件夹
+   */
   // outputDir: 'build'
 }
 
