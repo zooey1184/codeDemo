@@ -28,7 +28,9 @@
     "b": "react-app-rewired build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "bash": "chmod +x cli/bin/bash && cli/bin/bash",
+    "git": "node cli/bin/run.js"
   },
   "eslintConfig": {
     "extends": "react-app"
